@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="${dubbo.application.name}" owner="${owner}" organization="wuqw"/>
+    <dubbo:provider timeout="${dubbo.soTimeout}" retries="${retries}"/>
+    <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" file="${cache.file}"/>
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}"/>
+
+    <import resource="classpath:com/email/send/config/spring/app-context.xml"/>
+    <import resource="classpath:com/email/send/config/spring/datasources.xml"/>
+    <import resource="classpath:com/email/send/config/dubbo/dubbo-service.xml"/>
+</beans>
